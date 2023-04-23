@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul>li {
+            padding: 0.5rem 1rem
+        }
+
+        ul>li:nth-child(odd) {
+            text-align: rigth;
+            font-style: italic
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blank">
+        <div class="wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="view-header">
+                        <div class="header-icon">
+                            <i class="pe"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Chat con Sockert.io</h3>
+                            <small>
+                                y NodeJS
+                            </small>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="pane-body">
+                            divpanel
+                            <div class="panelheading">
+                                MEnsajes Enviados y Recibidos
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <ul class="list-style-type"></ul>
+                                    <form action="" id="liginForm" novalidate method="post">
+                                        <div class="form-group">
+                                            <label for="mensaje" class="controler-label">Mensaje</label>
+                                            <input type="text" placeholder="Ingrese el mensaje...." title="Please enter yuor username" requiere="" value="" name="nuevo-msg" id="nuevo-msg">
+                                            <span class="help-block-small">Escriba su mensaje</span>
+                                        </div>
+                                        <button class="btn" type="submit" onclick="enviar()">Enviar mensaje</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        const socket = io()
+        const form = document.querySelector('form')
+        const input = document.querySelector('input')
+
+        let mensajes = document.querySelector('ul')
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            if(input.value){
+                socket.emit('chat', input.value)
+                input.value = ''
+            }
+        })
+        socket.on('chat', (msg) => {
+            console.log(msg)
+            let item = document.createElement('li')
+            item.textContent = msg
+            mensajes.appendChild(item)
+            window.scrollTo(0,document.body.scrollHeight)
+        })
+
+    </script>
+</body>
+
+</html>
