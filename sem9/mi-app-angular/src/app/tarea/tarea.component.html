@@ -1,0 +1,13 @@
+<div>
+    <h2>Tareas</h2>
+        <mat-form-field>
+            <input type="text" #addTarea ngModel matInput placeholder="Nueva tarea">
+        </mat-form-field>
+        <button (click)="agregar(addTarea.value)" mat-raised-button color="accent" >Agregar</button>
+      
+      <mat-list>
+        <mat-list-item *ngFor="let tarea of listaTarea">{{ tarea }}</mat-list-item>
+        <mat-divider *ngFor="let tarea of listaTarea"></mat-divider>
+      </mat-list>
+</div>
+
