@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color: brown;
+    font-weight: bolder;
+}
+h2{
+    font-weight: 700;
+    color: blueviolet;
+}
+p{
+    font-weight: lighter;
+    font-style: italic;
+}
