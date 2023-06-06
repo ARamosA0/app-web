@@ -14,6 +14,7 @@ export class AppComponent {
 
   changeTaskState(){
   }
+  // 
 
   filteringTasks(task: { tarea: string, estado: boolean }[]){
     console.log(task)
