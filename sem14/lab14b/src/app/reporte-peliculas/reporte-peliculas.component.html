@@ -1,0 +1,26 @@
+<div>
+  <label for="genero">Filtrar por género:</label>
+  <select id="genero" (change)="filtrarPeliculas($event)">
+    <option value="todos">Todos</option>
+    <option value="Acción">Acción</option>
+    <option value="Comedia">Comedia</option>
+    <option value="Drama">Drama</option>
+  </select>
+</div>
+
+<div class="cont">
+  <table>
+    <tr>
+      <th>Título</th>
+      <th>Género</th>
+      <th>Año de lanzamiento</th>
+    </tr>
+    <tr *ngFor="let pelicula of peliculas">
+      <td>{{ pelicula.titulo }}</td>
+      <td>{{ pelicula.genero }}</td>
+      <td>{{ pelicula.lanzamiento }}</td>
+    </tr>
+  </table>
+
+  <button (click)="generarPDF()">Generar PDF</button>
+</div>
